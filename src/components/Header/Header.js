@@ -45,7 +45,7 @@ const Header = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/courses"
               aria-label="Courses"
               title="Courses"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -162,12 +162,12 @@ const Header = () => {
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
-                        Product
+                        Home
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href="/"
+                        href="/courses"
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
