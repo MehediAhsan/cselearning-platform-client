@@ -7,8 +7,8 @@ const Courses = () => {
     const courses = useLoaderData();
     console.log(courses);
     return (
-        <div className='grid grid-cols-4'>
-            <div className='col-span-1'>
+        <div className='grid grid-cols-4 gap-4 px-5 my-10'>
+            <div className='col-span-1 border'>
                 {
                     courses.map(course => <LeftSideBar key={course.id} course={course}></LeftSideBar>)
                 }

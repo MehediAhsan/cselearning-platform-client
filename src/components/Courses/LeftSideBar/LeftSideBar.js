@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const LeftSideBar = ({course}) => {
     const {name} = course;
     return (
-        <div>
-            <Link>{name}</Link>
+        <div className='text-center mt-8 font-semibold text-lg'>
+            <Link >{name}</Link>
         </div>
     );
 };
