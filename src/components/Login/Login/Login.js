@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
@@ -7,8 +7,12 @@ import { useState } from 'react';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const {signIn, providerLogin} = useContext(AuthContext);
+    const {signIn, providerLogin, setLoading} = useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -26,6 +30,7 @@ const Login = () => {
             console.log(user);
             form.reset();
             setError('');
+            navigate(from, {replace:true});
         })
         .catch( error => {
             console.error(error);
@@ -38,9 +43,13 @@ const Login = () => {
         .then( result => {
             const user = result.user;
             console.log(user);
+            navigate(from, {replace:true});
         })
         .catch( error => {
             console.error(error);
+        })
+        .finally( () => {
+            setLoading(false);
         })
     }
 
@@ -49,6 +58,7 @@ const Login = () => {
         .then( result => {
             const user = result.user;
             console.log(user);
+            navigate(from, {replace:true});
         })
         .catch( error => {
             console.error(error);
