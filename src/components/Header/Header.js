@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Header = () => {
+    const {user} = useContext(AuthContext);
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
@@ -83,6 +87,7 @@ const Header = () => {
               Login
             </Link>
           </li>
+          {user?.diplayName}
         </ul>
         <div className="lg:hidden">
           <button

@@ -1,10 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import { useState } from 'react';
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
+    const [error, setError] = useState('');
+
     const handleSubmit = event =>{
         event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password);
+
+        signIn(email, password)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            setError('');
+        })
+        .catch( error => {
+            console.error(error);
+            setError(error.message);
+        })
     }
 
 
@@ -25,6 +47,9 @@ const Login = () => {
                         </div>
                     </div>
                     <button type='submit' className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400 font-semibold">Login</button>
+                    <p className='text-red-600'>
+                        {error}
+                    </p>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>

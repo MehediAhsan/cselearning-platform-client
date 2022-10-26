@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import { useState } from 'react';
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext);
+    const [error, setError] = useState('');
+
     const handleSubmit = event =>{
         event.preventDefault();
 
@@ -12,6 +18,19 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name,photoURL,email,password);
+
+        createUser(email, password)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            setError('');
+        })
+        .catch( error => {
+            console.error(error);
+            setError(error.message);
+        })
+
     }
 
 
@@ -37,6 +56,9 @@ const Register = () => {
                         <input type="password" name="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required />
                     </div>
                     <button type='submit' className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400 font-semibold">Sign up</button>
+                    <p className='text-red-600'>
+                        {error}
+                    </p>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
