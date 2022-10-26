@@ -87,7 +87,7 @@ const Header = () => {
               Login
             </Link>
           </li>
-          {user?.diplayName}
+          {user && user?.displayName}
         </ul>
         <div className="lg:hidden">
           <button

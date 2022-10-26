@@ -4,10 +4,14 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { useState } from 'react';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const {signIn, providerLogin} = useContext(AuthContext);
     const [error, setError] = useState('');
+
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -26,6 +30,28 @@ const Login = () => {
         .catch( error => {
             console.error(error);
             setError(error.message);
+        })
+    }
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch( error => {
+            console.error(error);
+        })
+    }
+
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch( error => {
+            console.error(error);
         })
     }
 
@@ -57,11 +83,11 @@ const Login = () => {
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
                 </div>
                 <div className="space-y-4">
-                    <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
+                    <button onClick={handleGoogleSignIn} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
                         <FaGoogle className="w-5 h-5 fill-current"></FaGoogle>
                         <p>Login with Google</p>
                     </button>
-                    <button aria-label="Login with GitHub" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
+                    <button onClick={handleGithubSignIn} aria-label="Login with GitHub" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
                         <FaGithub className="w-5 h-5 fill-current"></FaGithub>
                         <p>Login with GitHub</p>
                     </button>
