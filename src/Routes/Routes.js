@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blog from "../components/Blog/Blog";
 import CourseDetail from "../components/Courses/CourseDetail/CourseDetail";
 import Courses from "../components/Courses/Courses";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Faq from "../components/Faq/Faq";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login/Login";
 import Register from "../components/Login/Register/Register";
@@ -10,6 +13,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -24,6 +28,14 @@ export const router = createBrowserRouter([
                 path: '/course/:id',
                 loader: ({params}) => fetch(`https://b610-learning-platform-server-side-one.vercel.app/course/${params.id}`),
                 element: <CourseDetail></CourseDetail>
+            },
+            {
+                path: '/faq',
+                element: <Faq></Faq>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
                 path: '/login',

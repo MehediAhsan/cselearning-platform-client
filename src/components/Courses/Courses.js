@@ -13,8 +13,8 @@ const Courses = () => {
                     courses.map(course => <LeftSideBar key={course.id} course={course}></LeftSideBar>)
                 }
             </div>
-            <div className='col-span-3'>
-                <div className='grid grid-cols-2 gap-6'>
+            <div className='col-span-3 px-20'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                     {
                         courses.map(course => <CourseContent key={course.id} course={course}></CourseContent>)
                     }
