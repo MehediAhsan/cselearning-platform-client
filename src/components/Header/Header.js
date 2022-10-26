@@ -4,9 +4,16 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Header = () => {
-    const {user} = useContext(AuthContext);
-
+    const {user, logOut} = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleLogOut = () => {
+      logOut()
+      .then( () => {})
+      .catch( error => {
+          console.error(error);
+      })
+    }
 
     return (
         <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -77,17 +84,40 @@ const Header = () => {
               Blog
             </Link>
           </li>
-          <li>
-            <Link
-              to="/login"
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-500 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-              aria-label="Login"
-              title="Login"
-            >
-              Login
-            </Link>
-          </li>
-          {user && user?.displayName}
+
+          <>
+            {
+              user ?
+              <>
+                <li>
+                  <button onClick={handleLogOut}
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Login"
+                    title="Login"
+                  >
+                    Logout
+                  </button>
+                </li>
+                <li>
+                  <Link>
+                    <img src={user?.photoURL} alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
+                  </Link>
+                </li>
+              </> :
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-500 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Login"
+                    title="Login"
+                  >
+                    Login
+                  </Link>
+                </li>
+              </>
+            }
+          </>
         </ul>
         <div className="lg:hidden">
           <button
@@ -200,16 +230,39 @@ const Header = () => {
                         Blog
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        href="/login"
-                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-500 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                        aria-label="Login"
-                        title="Login"
-                      >
-                        Login
-                      </Link>
-                    </li>
+                    <>
+                      {
+                        user ?
+                        <>
+                          <li>
+                            <button onClick={handleLogOut}
+                              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                              aria-label="Login"
+                              title="Login"
+                            >
+                              Logout
+                            </button>
+                          </li>
+                          <li>
+                            <Link>
+                              <img src={user?.photoURL} alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
+                            </Link>
+                          </li>
+                        </> :
+                        <>
+                          <li>
+                            <Link
+                              to="/login"
+                              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-500 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                              aria-label="Login"
+                              title="Login"
+                            >
+                              Login
+                            </Link>
+                          </li>
+                        </>
+                      }
+                    </>
                   </ul>
                 </nav>
               </div>
