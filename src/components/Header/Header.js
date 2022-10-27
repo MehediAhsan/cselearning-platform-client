@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import logo from '../../assets/logo.png';
+import toast from 'react-hot-toast';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
@@ -12,7 +13,9 @@ const Header = () => {
 
     const handleLogOut = () => {
       logOut()
-      .then( () => {})
+      .then( () => {
+        toast.success('Logout Successfully');
+      })
       .catch( error => {
           console.error(error);
       })
@@ -32,7 +35,7 @@ const Header = () => {
             CSeLearning
           </span>
         </Link>
-        <ul className="flex items-center hidden space-x-8 lg:flex">
+        <ul className="items-center hidden space-x-8 lg:flex">
           <li>
             <Link
               to="/"
@@ -73,6 +76,16 @@ const Header = () => {
               Blog
             </Link>
           </li>
+          <li>
+            <label for="Toggle2" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100">
+              <span className='text-gray-700 font-medium'>Darkmode</span>
+              <span className="relative">
+                <input id="Toggle2" type="checkbox" className="hidden peer" />
+                <div className="w-10 h-4 rounded-full shadow dark:bg-gray-600 peer-checked:dark:bg-violet-400"></div>
+                <div className="absolute left-0 w-6 h-6 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto dark:bg-violet-400"></div>
+              </span>
+            </label>
+          </li>
 
           <>
             {
@@ -94,7 +107,7 @@ const Header = () => {
                     trigger="mouseenter"
                   >
                     <Link>
-                      <img src={user?.photoURL} alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
+                      <img src={user?.photoURL ? user?.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'} alt="" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
                     </Link>
                   </Tooltip>
                 </li>
@@ -142,7 +155,7 @@ const Header = () => {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <Link
-                      href="/"
+                      to="/"
                       aria-label="CSeLearning"
                       title="CSeLearning"
                       className="inline-flex items-center"
@@ -173,9 +186,9 @@ const Header = () => {
                   <ul className="space-y-4">
                     <li>
                       <Link
-                        href="/"
-                        aria-label="Our product"
-                        title="Our product"
+                        to="/"
+                        aria-label="Home"
+                        title="Home"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         Home
@@ -183,7 +196,7 @@ const Header = () => {
                     </li>
                     <li>
                       <Link
-                        href="/courses"
+                        to="/courses"
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -203,13 +216,23 @@ const Header = () => {
                     </li>
                     <li>
                       <Link
-                        href="/blog"
+                        to="/blog"
                         aria-label="Blog"
                         title="Blog"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         Blog
                       </Link>
+                    </li>
+                    <li>
+                      <label for="Toggle2" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100">
+                        <span className='text-gray-700 font-medium'>Darkmode</span>
+                        <span className="relative">
+                          <input id="Toggle2" type="checkbox" className="hidden peer" />
+                          <div className="w-10 h-4 rounded-full shadow dark:bg-gray-600 peer-checked:dark:bg-violet-400"></div>
+                          <div className="absolute left-0 w-6 h-6 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto dark:bg-violet-400"></div>
+                        </span>
+                      </label>
                     </li>
                     <>
                       {

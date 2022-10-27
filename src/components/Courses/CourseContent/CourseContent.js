@@ -5,10 +5,9 @@ import { HiStar } from "react-icons/hi";
 
 const CourseContent = ({course}) => {
     const {id, name, image, description, rating} = course;
-    console.log(course);
     return (
         <div class="">
-        <div class="border-2 border-gray-200 border-opacity-80 rounded-lg overflow-hidden">
+        <div class="w-10/12 mx-auto border-2 border-gray-200 border-opacity-80 rounded-lg overflow-hidden">
           <img class="h-64 w-full object-cover object-center" src={image} alt="blog"/>
           <div class="p-6">
             <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{name}</h1>

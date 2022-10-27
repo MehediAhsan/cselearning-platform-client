@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { useState } from 'react';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const {signIn, providerLogin, setLoading} = useContext(AuthContext);
@@ -31,6 +32,7 @@ const Login = () => {
             form.reset();
             setError('');
             navigate(from, {replace:true});
+            toast.success('Successfully Login');
         })
         .catch( error => {
             console.error(error);
@@ -44,6 +46,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             navigate(from, {replace:true});
+            toast.success('Successfully Login');
         })
         .catch( error => {
             console.error(error);
@@ -59,6 +62,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             navigate(from, {replace:true});
+            toast.success('Successfully Login');
         })
         .catch( error => {
             console.error(error);
@@ -69,7 +73,7 @@ const Login = () => {
     return (
         <div>
             <div className="w-full max-w-md p-8 space-y-3 rounded dark:bg-gray-900 dark:text-gray-100 mx-auto my-5">
-                <h1 className="text-2xl font-bold text-center">Login</h1>
+                <h1 className="text-3xl font-semibold text-center pb-3">Login</h1>
                 <form onSubmit={handleSubmit} className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div>
                         <label className="block mb-2 text-sm">Email address</label>

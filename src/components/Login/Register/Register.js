@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaGoogle, FaGithub } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const {createUser, updateUserProfile} = useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -26,6 +30,8 @@ const Register = () => {
             form.reset();
             setError('');
             handleUpdateUserProfile(name, photoURL);
+            navigate(from, {replace:true});
+            toast.success('Registration completed successfully');
         })
         .catch( error => {
             console.error(error);
@@ -46,12 +52,10 @@ const Register = () => {
         })
     }
 
-
-
     return (
         <div>
             <div className="w-full max-w-md p-8 space-y-3 rounded dark:bg-gray-900 dark:text-gray-100 mx-auto my-5">
-                <h1 className="text-2xl font-bold text-center">Sign up</h1>
+                <h1 className="text-3xl font-semibold text-center pb-3">Sign up</h1>
                 <form onSubmit={handleSubmit} className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div>
                         <label className="block mb-2 text-sm">Full Name</label>
@@ -73,22 +77,7 @@ const Register = () => {
                     <p className='text-red-600'>
                         {error}
                     </p>
-                </form>
-                <div className="flex items-center pt-4 space-x-1">
-                    <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-                    <p className="px-3 text-sm dark:text-gray-400">Login with social accounts</p>
-                    <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-                </div>
-                <div className="space-y-4">
-                    <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
-                        <FaGoogle className="w-5 h-5 fill-current"></FaGoogle>
-                        <p>Login with Google</p>
-                    </button>
-                    <button aria-label="Login with GitHub" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
-                        <FaGithub className="w-5 h-5 fill-current"></FaGithub>
-                        <p>Login with GitHub</p>
-                    </button>
-                </div>
+                </form>      
                 <p className="px-6 text-sm text-center dark:text-gray-400">Already have an account?
 				<Link rel="noopener noreferrer" to="/login" className="hover:underline dark:text-violet-400">Login</Link>.
 			    </p>
