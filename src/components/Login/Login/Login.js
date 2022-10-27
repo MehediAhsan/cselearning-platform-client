@@ -87,7 +87,7 @@ const Login = () => {
                         </div>
                     </div>
                     <button type='submit' className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400 font-semibold">Login</button>
-                    <p className='text-red-600'>
+                    <p className='text-red-500'>
                         {error}
                     </p>
                 </form>

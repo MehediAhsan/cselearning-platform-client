@@ -74,7 +74,7 @@ const Register = () => {
                         <input type="password" name="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required />
                     </div>
                     <button type='submit' className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400 font-semibold">Sign up</button>
-                    <p className='text-red-600'>
+                    <p className='text-red-500'>
                         {error}
                     </p>
                 </form>      

@@ -17,10 +17,10 @@ const Home = () => {
                         This online learning platform expecially focus to cse student. We includes different types of courses algorithms, data structures, dbms, software engineering etc.
                     </p>
                 </div>
-                <div className="flex flex-col items-center md:flex-row">
+                <div className="">
                     <Link
                     to="/courses"
-                    className="inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                    className="inline-flex items-center justify-center h-12 px-6 mb-3 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                     >
                     <span className="mr-2">Explore Courses</span>
                     <FaArrowRight className='mt-1'></FaArrowRight>
