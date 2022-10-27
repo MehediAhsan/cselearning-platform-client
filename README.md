@@ -4,7 +4,7 @@ This online learning platform expecially focus to cse student. We includes diffe
 
 
 ## Live Link
-Hosted in Firebase -> [CSeLearning]()
+Hosted in Firebase -> [CSeLearning](https://cselearning-platform.web.app/)
 
 ## Project Features and Functionality:
 
@@ -21,6 +21,8 @@ Framework -> [Tailwindcss](https://tailwindcss.com/)
 
 Tailwind Components -> [Kitwind](https://kitwind.io/products/kometa/components)
 
-Icon -> [HeroIcons](https://heroicons.com/)
+Icon -> [ReactIcons](https://react-icons.github.io/react-icons/)
 
-Toast -> [Toastify](https://www.npmjs.com/package/react-toastify)
+Toast -> [ReactHotToast](https://react-hot-toast.com/)
+
+Tooltip -> [Tooltip](https://www.npmjs.com/package/react-tippy)

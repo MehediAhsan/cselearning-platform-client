@@ -5,7 +5,6 @@ import LeftSideBar from './LeftSideBar/LeftSideBar';
 
 const Courses = () => {
     const courses = useLoaderData();
-    console.log(courses);
     return (
         <div>
             <h1 className='text-3xl font-semibold text-center my-5'>All Courses</h1>

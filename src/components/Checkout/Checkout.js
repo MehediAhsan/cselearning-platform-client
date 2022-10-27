@@ -8,7 +8,7 @@ const Checkout = () => {
     const {name, price} = course;
     const {user} = useContext(AuthContext);
     return (
-        <div className='text-center p-10 w-11/12 md:w-8/12 lg:w-7/12 mx-auto border mt-20 shadow'>
+        <div className='text-center p-10 w-11/12 md:w-8/12 lg:w-7/12 mx-auto border my-32 shadow'>
             <h1 className="text-2xl md:text-3xl font-bold">Wellcome {user?.displayName},
 		    </h1>
             <h1 className="text-2xl md:text-3xl font-bold pt-1">You get the access of {name} course</h1>

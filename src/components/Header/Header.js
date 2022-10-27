@@ -6,10 +6,12 @@ import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import logo from '../../assets/logo.png';
 import toast from 'react-hot-toast';
+import ToggleButton from 'react-toggle-button';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
     const handleLogOut = () => {
       logOut()
@@ -77,14 +79,14 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <label for="Toggle2" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100">
-              <span className='text-gray-700 font-medium'>Darkmode</span>
-              <span className="relative">
-                <input id="Toggle2" type="checkbox" className="hidden peer" />
-                <div className="w-10 h-4 rounded-full shadow dark:bg-gray-600 peer-checked:dark:bg-violet-400"></div>
-                <div className="absolute left-0 w-6 h-6 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto dark:bg-violet-400"></div>
-              </span>
-            </label>
+            <div className='flex font-medium text-gray-700 items-center justify-center gap-2'>
+              <span>Darkmode</span>
+              <ToggleButton
+                value={ toggle || false }
+                onToggle={(value) => {
+                  setToggle(x=>!x)
+                }} />
+            </div>
           </li>
 
           <>
@@ -225,14 +227,14 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
-                      <label for="Toggle2" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100">
-                        <span className='text-gray-700 font-medium'>Darkmode</span>
-                        <span className="relative">
-                          <input id="Toggle2" type="checkbox" className="hidden peer" />
-                          <div className="w-10 h-4 rounded-full shadow dark:bg-gray-600 peer-checked:dark:bg-violet-400"></div>
-                          <div className="absolute left-0 w-6 h-6 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto dark:bg-violet-400"></div>
-                        </span>
-                      </label>
+                      <div className='flex font-medium text-gray-700 items-center gap-2'>
+                        <span>Darkmode</span>
+                        <ToggleButton
+                          value={ toggle || false }
+                          onToggle={(value) => {
+                            setToggle(x=>!x)
+                          }} />
+                      </div>
                     </li>
                     <>
                       {
