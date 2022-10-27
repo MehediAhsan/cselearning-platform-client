@@ -6,7 +6,7 @@ const Blog = () => {
             <h1 className='text-3xl font-semibold text-center text-accent mt-20 mb-10'>Q/A</h1>
             <div className="grid grid-cols-1 w-full md:w-9/12 mx-auto">
                 <div className="p-7 lg:p-10">
-                    <h3 className="text-2xl font-semibold mb-4">what is cors?</h3>
+                    <h3 className="text-2xl font-semibold mb-4">What is cors?</h3>
                     <p className="text-gray-500 text-lg ml-8">CORS stands for Cross-Origin Resource Sharing. It allows us to relax the security applied to an API. This is done by bypassing the Access-Control-Allow-Origin headers, which specify which origins can access the API Cross-Origin Resource Sharing is an HTTP-header based mechanism implemented by the browser which allows a server or an API(Application Programming Interface) to indicate any origins (different in terms of protocol, hostname, or port) other than its origin from which the unknown origin gets permission to access and load resources. The cors package available in the npm registry is used to tackle CORS errors in a Node.js application. .</p>
                 </div>
                 <div className="p-7 lg:p-10">
@@ -15,7 +15,7 @@ const Blog = () => {
                 </div>
                 <div className="p-7 lg:p-10">
                     <h3 className="text-2xl font-semibold mb-4">How does the private route work?</h3>
-                    <p className="text-gray-500 text-lg ml-8"> The private route component is similar to the public route, the only change is that redirect URL and authenticate condition.If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated (Logged in).  </p>
+                    <p className="text-gray-500 text-lg ml-8"> The private route component is similar to the public route, the only change is that redirect URL and authenticate condition.If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated (Logged in).The react private route component renders child components (children) if the user is logged in. If not logged in the user is redirected to the /login page with the return url passed in the location state property.  </p>
                 </div>
                 <div className="p-7 lg:p-10">
                     <h3 className="text-2xl font-semibold mb-4">What is Node? How does Node work?</h3>

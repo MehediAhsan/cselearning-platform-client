@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { Tooltip } from 'react-tippy';
+import 'react-tippy/dist/tippy.css';
+import logo from '../../assets/logo.png';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
@@ -24,22 +27,8 @@ const Header = () => {
           title="CSeLearning"
           className="inline-flex items-center"
         >
-          <svg
-            className="w-8 text-deep-purple-accent-400"
-            viewBox="0 0 24 24"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeMiterlimit="10"
-            stroke="currentColor"
-            fill="none"
-          >
-            <rect x="3" y="1" width="7" height="12" />
-            <rect x="3" y="17" width="7" height="6" />
-            <rect x="14" y="1" width="7" height="6" />
-            <rect x="14" y="11" width="7" height="12" />
-          </svg>
-          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800">
+          <img className='w-10 h-10' src={logo} alt="" />
+          <span className="ml-2 text-2xl font-bold tracking-wide text-gray-800">
             CSeLearning
           </span>
         </Link>
@@ -99,9 +88,15 @@ const Header = () => {
                   </button>
                 </li>
                 <li>
-                  <Link>
-                    <img src={user?.photoURL} alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
-                  </Link>
+                  <Tooltip
+                    title={user?.displayName}
+                    position="bottom"
+                    trigger="mouseenter"
+                  >
+                    <Link>
+                      <img src={user?.photoURL} alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
+                    </Link>
+                  </Tooltip>
                 </li>
               </> :
               <>
@@ -152,21 +147,7 @@ const Header = () => {
                       title="CSeLearning"
                       className="inline-flex items-center"
                     >
-                      <svg
-                        className="w-8 text-deep-purple-accent-400"
-                        viewBox="0 0 24 24"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeMiterlimit="10"
-                        stroke="currentColor"
-                        fill="none"
-                      >
-                        <rect x="3" y="1" width="7" height="12" />
-                        <rect x="3" y="17" width="7" height="6" />
-                        <rect x="14" y="1" width="7" height="6" />
-                        <rect x="14" y="11" width="7" height="12" />
-                      </svg>
+                      <img className='w-10 h-10' src={logo} alt="" />
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800">
                         CSeLearning
                       </span>
@@ -244,9 +225,15 @@ const Header = () => {
                             </button>
                           </li>
                           <li>
-                            <Link>
-                              <img src={user?.photoURL} alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
-                            </Link>
+                            <Tooltip
+                              title={user?.displayName}
+                              position="bottom"
+                              trigger="mouseenter"
+                            >
+                              <Link>
+                                <img src={user?.photoURL} alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
+                              </Link>
+                            </Tooltip>
                           </li>
                         </> :
                         <>
