@@ -256,7 +256,7 @@ const Header = () => {
                               trigger="mouseenter"
                             >
                               <Link>
-                                <img src={user?.photoURL} alt="avatar" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
+                                <img src={user?.photoURL ? user?.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'} alt="" className="object-cover w-10 h-10 mx-4 rounded-full dark:bg-gray-500" />
                               </Link>
                             </Tooltip>
                           </li>
